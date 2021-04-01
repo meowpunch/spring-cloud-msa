@@ -34,7 +34,7 @@ spring.cloud.config.server:
 
 ## Config Client
 2021.03 Spring Boot `2.2.5.RELEASE` 버전 기준, 아래와 같은 방법으로 기존 서비스들을 Config Client 로 만들어 줄 수 있다. 
-최신 버전은 `bootify-kotlin` 참
+최신 버전은 `bootify-kotlin` 참고
 
 ### dependency
 - 현재 spring boot ver[`2.2.5.RELEASE`] 와 호환되는 spring cloud ver[`Hoxton.SR3`] 을 잘 맞춰야 한다.
