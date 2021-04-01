@@ -61,9 +61,8 @@ dependencyManagement {
 
 - 개발 및 운영 프로퍼티들은 Config Repo 로 옮긴다. default 프로퍼티 경우 아래와 같은 설정을 추가해야 이후 로컬 환경에서의 프로퍼티로 override 가 가능하다.
 ```properties
-# override the remote properties with their own System properties or config files
+# spring cloud config
 spring.cloud.config.allowOverride=true
-# override from any local property source.
 spring.cloud.config.overrideNone=true
 ```
 더 자세한 사항은 [여기](https://cloud.spring.io/spring-cloud-commons/multi/multi__spring_cloud_context_application_context_services.html#overriding-bootstrap-properties) 참고
