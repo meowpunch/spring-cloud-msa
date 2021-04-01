@@ -1,0 +1,45 @@
+version: '3'
+services:
+  config-server:
+    container_name: config-server
+    stdin_open: true
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 8888:8888
+    healthcheck:
+      test: [ "CMD-SHELL", "curl --silent --fail localhost:8888/actuator/health || exit 1" ]
+      interval: 20s
+      timeout: 5s
+      retries: 5
+
+  bootiful-java:
+    container_name: config-client1
+    environment:
+      - SPRING_PROFILES_ACTIVE=${BOOTIFUL_JAVA_PROFILE:-local}
+      - CONFIG_SERVER=http://config-server:8888
+    stdin_open: true
+    build:
+      context: client/bootiful-java
+      dockerfile: Dockerfile
+    ports:
+      - 8007:8007
+    depends_on:
+      config-server:
+        condition: service_healthy
+
+  bootiful-kotlin:
+    container_name: config-client2
+    environment:
+      - SPRING_PROFILES_ACTIVE=${BOOTIFUL_KOTLIN_PROFILE:-dev}
+      - CONFIG_SERVER=http://config-server:8888
+    stdin_open: true
+    build:
+      context: client/bootiful-kotlin
+      dockerfile: Dockerfile
+    ports:
+      - 8008:8008
+    depends_on:
+      config-server:
+        condition: service_healthy

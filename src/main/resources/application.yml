@@ -4,6 +4,11 @@ spring.cloud.config.server:
   git:
     uri: http://meowpunch@yona.antock.com:8999/meowpunch/config-repo
     searchPaths:
+      # test client
+      - bootiful-java
+      - bootiful-kotlin
+
+      # Antock Services
       - hubble
       - hubble-api
     #          username: ""
