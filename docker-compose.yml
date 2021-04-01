@@ -24,7 +24,7 @@ services:
       context: client/bootiful-java
       dockerfile: Dockerfile
     ports:
-      - 8007:8007
+      - ${BOOTIFUL_JAVA_PORT:-8007}:8007
     depends_on:
       config-server:
         condition: service_healthy
@@ -39,7 +39,7 @@ services:
       context: client/bootiful-kotlin
       dockerfile: Dockerfile
     ports:
-      - 8008:8008
+      - ${BOOTIFUL_KOTLIN_PORT:-8008}:8008
     depends_on:
       config-server:
         condition: service_healthy

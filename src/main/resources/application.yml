@@ -1,5 +1,14 @@
 server:
   port: 8888
+
+#
+# follow up https://docs.spring.io/spring-cloud-config/docs/current/reference/html/#_pattern_matching_and_multiple_repositories
+#
+# - uri: config 저장소
+# - searchPaths
+#   config-client 를 추가하면서 config-repo 에 추가한 디렉토리를 아래 추가해야지 검색 가능
+#   더 좋은 방법이 있을 수 있음. (위 주소 참고)
+#
 spring.cloud.config.server:
   git:
     uri: http://meowpunch@yona.antock.com:8999/meowpunch/config-repo
