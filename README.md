@@ -13,7 +13,7 @@
 
 # TODO
 - [ ] git 저장소 변경 및 private 적용
-- [ ] RabbitMQ 적용
+- [ ] Spring Cloud Bus 및 webhook 적용
 
 # SETUP
 ## Config Server
@@ -33,10 +33,13 @@ spring.cloud.config.server:
 ```
 
 ## Config Client
-아래와 같은 방법으로 기존 서비스들을 Config Client 로 만들어 줄 수 있다.
+2021.03 Spring Boot `2.2.5.RELEASE` 버전 기준, 아래와 같은 방법으로 기존 서비스들을 Config Client 로 만들어 줄 수 있다. 
+최신 버전은 `bootify-kotlin` 참
+
 ### dependency
-- 아래와 같은 의존성을 추가해준다. (2021.03 Spring Boot `2.2.5.RELEASE` 버전 기준)
-```
+- 현재 spring boot ver[`2.2.5.RELEASE`] 와 호환되는 spring cloud ver[`Hoxton.SR3`] 을 잘 맞춰야 한다.
+```groovy
+// build.gradle
 ext {
 	set('springCloudVersion', "Hoxton.SR3")
 }
@@ -44,8 +47,7 @@ dependencies {
 	// spring cloud
 	implementation 'org.springframework.cloud:spring-cloud-starter-config'
 	implementation 'org.springframework.boot:spring-boot-starter-actuator'
-
-	...
+    
 }
 dependencyManagement {
 	imports {
@@ -55,7 +57,8 @@ dependencyManagement {
 ```
 
 ### config files
-- 개발 및 운영 프로퍼티들은 Config Repo 로 옮긴다. default 프로퍼티 경우 아래와 같은 설정을 추가해야 이후 로컬 환경에서의 프로퍼티로 override가 가능하다.
+
+- 개발 및 운영 프로퍼티들은 Config Repo 로 옮긴다. default 프로퍼티 경우 아래와 같은 설정을 추가해야 이후 로컬 환경에서의 프로퍼티로 override 가 가능하다.
 ```properties
 # override the remote properties with their own System properties or config files
 spring.cloud.config.allowOverride=true
@@ -64,6 +67,22 @@ spring.cloud.config.overrideNone=true
 ```
 더 자세한 사항은 [여기](https://cloud.spring.io/spring-cloud-commons/multi/multi__spring_cloud_context_application_context_services.html#overriding-bootstrap-properties) 참고
 
+- `resoruces/bootstrap.properties` 를 추가해준다. (최신버전은 다름)
+```properties
+# bootstrap.properties
+# follow up Spring Cloud Config 2.2.2 doc
+# https://cloud.spring.io/spring-cloud-static/spring-cloud-config/2.2.2.RELEASE/reference/html/
+# default `application`
+spring.application.name=hubble-api
+# default `http://localhost:8888`
+spring.cloud.config.uri=${CONFIG_SERVER:http://localhost:8888}
+# Spring Boot Actuator 에서 endpoint 중 config 를 재설정하는 endpoint `/actuator/refresh` 만 열어둔다.
+management.endpoints.jmx.exposure.exclude=*
+management.endpoints.web.base-path=/actuator
+management.endpoints.web.exposure.include=refresh
+```
+
+- `resources/application-{profile}.properties` 을 추가하여 로컬환경에서 자유롭게 테스트 
 
 # Test
 

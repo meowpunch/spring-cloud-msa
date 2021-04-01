@@ -17,16 +17,16 @@ ext {
 }
 
 dependencies {
+    // spring cloud config
+    implementation 'org.springframework.cloud:spring-cloud-starter-config'
+    implementation 'org.springframework.boot:spring-boot-starter-actuator'
+
     // webMVC
     implementation 'org.springframework.boot:spring-boot-starter-web'
 
     // DB
     implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:2.1.1'
     runtimeOnly 'org.postgresql:postgresql'
-
-    // spring cloud config
-    implementation 'org.springframework.cloud:spring-cloud-starter-config'
-    implementation 'org.springframework.boot:spring-boot-starter-actuator'
 
     // etc
     implementation 'org.springframework.boot:spring-boot-devtools'
