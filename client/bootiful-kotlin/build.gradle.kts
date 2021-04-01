@@ -23,6 +23,7 @@ dependencies {
 
     // spring cloud config
     implementation("org.springframework.cloud:spring-cloud-starter-config")
+    implementation("org.springframework.boot:spring-boot-starter-actuator")
 
     // kotlin
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
