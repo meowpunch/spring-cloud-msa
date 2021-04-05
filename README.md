@@ -101,10 +101,10 @@ management.endpoints.web.exposure.include=refresh
 - 아래의 설정을 변경하면서 두 클라이언트 들의 프로파일 및 포트(host, not container)를 변경해가며 테스트 할 수 있다
 ```properties
 # .env
-BOOTIFUL_JAVA_PROFILE=local
-BOOTIFUL_JAVA_PORT=8007
-BOOTIFUL_KOTLIN_PROFILE=dev
-BOOTIFUL_KOTLIN_PORT=8008
+BOOTIFUL_JAVA_PROFILE=dev
+BOOTIFUL_JAVA_PORT=8005
+BOOTIFUL_KOTLIN_PROFILE=local
+BOOTIFUL_KOTLIN_PORT=8006
 ```
 
 ### How
