@@ -128,9 +128,9 @@ BOOTIFUL_KOTLIN_PORT=8008
 "Hello, I'm from application-local.properties of bootiful-kotlin"
 ```
 
-- reflect the changed state of configuration
+- reflect the changed state of configuration (`bootiful-kotlin` 경우 반영 안됨 - TODO)
   
-  custom:message: `Hello, I'm from bootiful-java-dev.properties` -> `Hello, I'm from bootiful-java-dev.properties changed
+  custom:message: `Hello, I'm from bootiful-java-dev.properties` -> `Hello, I'm from bootiful-java-dev.properties changed`
 ```shell
 > curl -XPOST 'http://localhost:8005/actuator/refresh'
 # custom message 를 변경하여 아래와 같은 response 받음
