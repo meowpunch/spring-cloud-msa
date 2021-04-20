@@ -4,7 +4,7 @@ plugins {
     id 'java'
 }
 
-group = 'com.antock'
+group = 'com.meowailand'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '1.8'
 
@@ -17,13 +17,20 @@ ext {
 }
 
 dependencies {
-    // spring cloud config
-    implementation("org.springframework.cloud:spring-cloud-starter-netflix-eureka-client")
-    implementation 'org.springframework.cloud:spring-cloud-starter-config'
-    implementation 'org.springframework.boot:spring-boot-starter-actuator'
-
     // webMVC
     implementation 'org.springframework.boot:spring-boot-starter-web'
+
+    // service discovery client
+    implementation("org.springframework.cloud:spring-cloud-starter-netflix-eureka-client")
+
+    // config client
+    implementation("org.springframework.cloud:spring-cloud-starter-config")
+
+    // actuator
+    implementation("org.springframework.boot:spring-boot-starter-actuator")
+
+    // bootstrap
+//    implementation("org.springframework.cloud:spring-cloud-starter-bootstrap")
 
     // DB
     implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:2.1.1'

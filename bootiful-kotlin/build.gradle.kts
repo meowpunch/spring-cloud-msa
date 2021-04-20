@@ -21,10 +21,17 @@ dependencies {
     // webflux
     implementation("org.springframework.boot:spring-boot-starter-webflux")
 
-    // spring cloud config
+    // service discovery client
     implementation("org.springframework.cloud:spring-cloud-starter-netflix-eureka-client")
+
+    // config client
     implementation("org.springframework.cloud:spring-cloud-starter-config")
+
+    // actuator
     implementation("org.springframework.boot:spring-boot-starter-actuator")
+
+    // bootstrap
+    implementation("org.springframework.cloud:spring-cloud-starter-bootstrap")
 
     // kotlin
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")

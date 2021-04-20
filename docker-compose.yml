@@ -1,10 +1,10 @@
 version: '3'
 services:
   config-server:
-    container_name: config-server
+    container_name: configuration
     stdin_open: true
     build:
-      context: config-server
+      context: configuration
       dockerfile: Dockerfile
 #      network: host
     ports:
@@ -17,10 +17,10 @@ services:
 #    network_mode: "host"
 
   discovery-server:
-    container_name: discovery-server
+    container_name: service-discovery
     stdin_open: true
     build:
-      context: discovery-server
+      context: service-discovery
       dockerfile: Dockerfile
 #      network: host
     ports:

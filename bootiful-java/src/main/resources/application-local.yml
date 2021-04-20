@@ -1,0 +1,27 @@
+custom:
+  message: "Hello, I'm from application-local.yml of bootiful-java"
+
+# hubble2 api
+hubble2:
+  api-server-path: http://api.antock.com
+  server-path: http://hubble2.antock.com
+  api-naver-path: https://openapi.naver.com/v1/search/news.json
+  api-bigkinds-path: https://www.bigkinds.or.kr/api/news/search.do
+
+# DB for jhb Test
+db:
+  host: 221.168.32.8
+  target: hubble2
+  port: 5432
+
+# devtools
+spring.devtools.restart.additional-paths: src/main/resources
+
+# mapper \uC774\uD558\uB97C \uB85C\uAE45 \uC704\uCE58\uB85C \uC124\uC815.
+logging:
+  level:
+    root: INFO
+#logging.level.web=DEBUG
+    org.springframework.web.client.RestTemplate: DEBUG
+#logging.level.org.apache.http=DEBUG
+    com.antock.hubble2.api.service.data: DEBUG

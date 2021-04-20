@@ -1,0 +1,68 @@
+server:
+  port: 8000
+
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+
+spring:
+  application:
+    name: api-gateway
+#  rabbitmq:
+#    host: 127.0.0.1
+#    port: 5672
+#    username: guest
+#    password: guest
+  cloud:
+    gateway:
+      default-filters:
+        - name: GlobalFilter
+          args:
+            baseMessage: Spring Cloud Gateway Global Filter
+            preLogger: true
+            postLogger: true
+      routes:
+        - id: bootiful-java
+          uri: lb://BOOTIFUL-JAVA
+          predicates:
+            - Path=/bootiful-java/message
+            - Method=GET
+          filters:
+#            - RemoveRequestHeader=Cookie
+            - RewritePath=/bootiful-java/(?<segment>.*), /$\{segment}
+        - id: bootiful-java
+          uri: lb://BOOTIFUL-JAVA
+          predicates:
+            - Path=/bootiful-java/actuator/**
+            - Method=GET,POST
+          filters:
+#            - RemoveRequestHeader=Cookie
+            - RewritePath=/bootiful-java/(?<segment>.*), /$\{segment}
+
+
+        - id: bootiful-kotlin
+          uri: lb://BOOTIFUL-KOTLIN
+          predicates:
+            - Path=/bootiful-kotlin/message
+            - Method=GET
+          filters:
+            #            - RemoveRequestHeader=Cookie
+            - RewritePath=/bootiful-kotlin/(?<segment>.*), /$\{segment}
+        - id: bootiful-kotlin
+          uri: lb://BOOTIFUL-KOTLIN
+          predicates:
+            - Path=/bootiful-kotlin/actuator/**
+            - Method=GET,POST
+          filters:
+            #            - RemoveRequestHeader=Cookie
+            - RewritePath=/bootiful-kotlin/(?<segment>.*), /$\{segment}
+
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: refresh, health, beans, httptrace, busrefresh, info # , metrics, prometheus

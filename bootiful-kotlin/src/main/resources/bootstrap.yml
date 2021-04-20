@@ -1,0 +1,13 @@
+# follow up Spring Cloud Config 2.2.2 doc
+# https://cloud.spring.io/spring-cloud-static/spring-cloud-config/2.2.2.RELEASE/reference/html/
+
+# default `application`
+spring:
+  application:
+    name: bootiful-kotlin
+
+  # default `http://localhost:8888`
+  cloud:
+    config:
+      uri: ${CONFIG_SERVER:http://localhost:8888}
+#      fail-fast: true
