@@ -1,5 +1,7 @@
 package com.meowailand.bootiful;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -21,8 +23,11 @@ class MessageRestController {
     @Value("${custom.message:Hello Nothing}")
     private String message;
 
+    final private Logger logger = LoggerFactory.getLogger(MessageRestController.class);
+
     @RequestMapping("/message")
     String getMessage() {
+        logger.info("/message Endpoint 가 호출됐습니다.");
         return this.message;
     }
 }
