@@ -11,19 +11,14 @@ eureka:
 spring:
   application:
     name: api-gateway
-#  rabbitmq:
-#    host: 127.0.0.1
-#    port: 5672
-#    username: guest
-#    password: guest
+  #  rabbitmq:
+  #    host: 127.0.0.1
+  #    port: 5672
+  #    username: guest
+  #    password: guest
   cloud:
     gateway:
-      default-filters:
-        - name: GlobalFilter
-          args:
-            baseMessage: Spring Cloud Gateway Global Filter
-            preLogger: true
-            postLogger: true
+
       routes:
         - id: bootiful-java
           uri: lb://BOOTIFUL-JAVA
@@ -31,7 +26,7 @@ spring:
             - Path=/bootiful-java/message
             - Method=GET
           filters:
-#            - RemoveRequestHeader=Cookie
+            #            - RemoveRequestHeader=Cookie
             - RewritePath=/bootiful-java/(?<segment>.*), /$\{segment}
         - id: bootiful-java
           uri: lb://BOOTIFUL-JAVA
@@ -39,7 +34,7 @@ spring:
             - Path=/bootiful-java/actuator/**
             - Method=GET,POST
           filters:
-#            - RemoveRequestHeader=Cookie
+            #            - RemoveRequestHeader=Cookie
             - RewritePath=/bootiful-java/(?<segment>.*), /$\{segment}
 
 
