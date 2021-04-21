@@ -28,16 +28,3 @@ Get Started
 > docker-compose --env-file .env up --build
 ```
 
-### With Docker
-- create bridge network
-```shell
-> docker network create --driver bridge spring-network
-
-
-
-
-
-
-## Test
-
-
