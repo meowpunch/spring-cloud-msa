@@ -17,14 +17,50 @@ This project includes the followings
 - bootiful-java, bootiful-kotlin
 
 # Get Started
-## Local
+## Test
 - gradle build all services
 ```shell
 # in root directory
 > ./gradlew build 
 ```
+
 - docker compose build
 ```shell
 > docker-compose --env-file .env up --build
 ```
 
+- request to services
+```shell
+> curl -XGET 'http://localhost:8000/bootiful-java/message'
+
+```
+
+
+# Furthermore
+## Multi Host Env
+in case of docker network `bridge`, services register docker subnet IP address to service discovery (eureka).
+If api gateway and microservices are running on different hosts, api gateway cannot request to microservices. 
+```shell
+# check eureka which IP address are registered.
+> curl -XGET 'http://localhost:8761/eureka/apps'
+...
+<application>
+  <name>BOOTIFUL-JAVA</name>
+  <instance>
+    <instanceId>bootiful-java:fae5c706c532b6897a44588c4e54ebf8</instanceId>
+    <hostName>172.21.0.6</hostName>
+    <app>BOOTIFUL-JAVA</app>
+    <ipAddr>172.21.0.6</ipAddr>
+    <status>UP</status>
+    <overriddenstatus>UNKNOWN</overriddenstatus>
+    <port enabled="true">41429</port>
+    ...
+</application>
+...
+```
+So, in this situation, set the docker network to `host` to use the host network directly.
+```shell
+> docker run -d --network host --name {container_name} {image}
+```
+Note that you can only use the host networking driver on Linux hosts, not Mac or Windows. [Doc](https://docs.docker.com/network/host/)
+> The host networking driver only works on Linux hosts, and is not supported on Docker Desktop for Mac, Docker Desktop for Windows, or Docker EE for Windows Server.
