@@ -12,23 +12,18 @@ server:
 spring:
   application:
     name: configuration
-  cloud.config.server:
-    git:
-      uri: http://meowpunch@yona.antock.com:8999/meowpunch/config-repo
-      searchPaths:
-        # test client
-        - bootiful-java
-        - bootiful-kotlin
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/meowpunch/spring-cloud-msa.git
+          searchPaths:
+            # test client
+            - repository
 
-        # Antock Services
-        - hubble
-        - hubble-api
-      #          username: ""
-      #          password: ""
-
-eureka:
-  client:
-    register-with-eureka: true
-    fetch-registry: true
-    service-url:
-      defaultZone: ${EUREKA_SERVER:http://localhost:8761/eureka/}
+#eureka:
+#  client:
+#    register-with-eureka: true
+#    fetch-registry: true
+#    service-url:
+#      defaultZone: ${EUREKA_SERVER:http://localhost:8761/eureka/}
