@@ -16,7 +16,7 @@ This project includes the followings
 - api-gateway
 - bootiful-java, bootiful-kotlin
 
-Get Started
+# Get Started
 ## Local
 - gradle build all services
 ```shell
