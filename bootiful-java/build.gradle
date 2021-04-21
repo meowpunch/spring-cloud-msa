@@ -17,7 +17,7 @@ ext {
 }
 
 dependencies {
-    // webMVC
+    // webmvc
     implementation 'org.springframework.boot:spring-boot-starter-web'
 
     // service discovery client
@@ -31,10 +31,6 @@ dependencies {
 
     // bootstrap
 //    implementation("org.springframework.cloud:spring-cloud-starter-bootstrap")
-
-    // DB
-    implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:2.1.1'
-    runtimeOnly 'org.postgresql:postgresql'
 
     // etc
     implementation 'org.springframework.boot:spring-boot-devtools'
