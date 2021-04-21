@@ -6,7 +6,7 @@ eureka:
     register-with-eureka: true
     fetch-registry: true
     service-url:
-      defaultZone: http://localhost:8761/eureka
+      defaultZone: ${EUREKA_SERVER:http://localhost:8761/eureka/}
 
 spring:
   application:
@@ -20,6 +20,14 @@ spring:
     gateway:
 
       routes:
+        - id: configuration
+          uri: lb://CONFIGURATION
+          predicates:
+            - Path=/configuration/**
+            - Method=GET
+          filters:
+            - RewritePath=/configuration/(?<segment>.*), /$\{segment}
+
         - id: bootiful-java
           uri: lb://BOOTIFUL-JAVA
           predicates:

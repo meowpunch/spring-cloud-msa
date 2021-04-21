@@ -8,18 +8,32 @@ e   88 88    88   8 88 88  8 88 "8    88   e 88    8   8 88  8 88  8    88    88
 8eee88 88    88   8 88 88  8 88ee8    88eee8 88eee 8eee8 88ee8 88ee8    88eee 88  8 88eee8 
                                                                                            
 ```
-Cloned and customized from [here](https://github.com/joneconsulting/msa_with_spring_cloud)
+cloned and customized from [here](https://github.com/joneconsulting/msa_with_spring_cloud)
 
 This project includes the followings
-- api-gateway
 - service-discovery
 - configuration
-- two test clients
-    - bootiful-java, bootiful-kotlin
-    
-# Get Started
+- api-gateway
+- bootiful-java, bootiful-kotlin
 
-## Set up
+Get Started
+## Local
+- gradle build all services
+```shell
+# in root directory
+> ./gradlew build 
+```
+- docker compose build
+```shell
+> docker-compose --env-file .env up --build
+```
+
+### With Docker
+- create bridge network
+```shell
+> docker network create --driver bridge spring-network
+
+
 
 
 

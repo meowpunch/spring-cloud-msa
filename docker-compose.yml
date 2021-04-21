@@ -1,28 +1,11 @@
 version: '3'
 services:
-  config-server:
-    container_name: configuration
-    stdin_open: true
-    build:
-      context: configuration
-      dockerfile: Dockerfile
-#      network: host
-    ports:
-      - 8888:8888
-    healthcheck:
-      test: [ "CMD-SHELL", "curl --silent --fail localhost:8888/actuator/health || exit 1" ]
-      interval: 20s
-      timeout: 5s
-      retries: 5
-#    network_mode: "host"
-
-  discovery-server:
+  service-discovery:
     container_name: service-discovery
     stdin_open: true
     build:
       context: service-discovery
       dockerfile: Dockerfile
-#      network: host
     ports:
       - 8761:8761
     healthcheck:
@@ -30,61 +13,89 @@ services:
       interval: 20s
       timeout: 5s
       retries: 5
+
+  configuration:
+    container_name: configuration
+    environment:
+      - EUREKA_SERVER=http://service-discovery:8761/eureka
+    stdin_open: true
+    build:
+      context: configuration
+      dockerfile: Dockerfile
+    ports:
+      - 8888:8888
+    healthcheck:
+      test: [ "CMD-SHELL", "curl --silent --fail localhost:8888/actuator/health || exit 1" ]
+      interval: 20s
+      timeout: 5s
+      retries: 5
     depends_on:
-      config-server:
+      service-discovery:
         condition: service_healthy
-#    network_mode: "host"
+
+  api-gateway:
+    container_name: api-gateway
+    environment:
+      - EUREKA_SERVER=http://service-discovery:8761/eureka
+    stdin_open: true
+    build:
+      context: api-gateway
+      dockerfile: Dockerfile
+    ports:
+      - 8000:8000
+    depends_on:
+      service-discovery:
+        condition: service_healthy
 
   bootiful-java1:
     container_name: java-client1
     environment:
       - SPRING_PROFILES_ACTIVE=${BOOTIFUL_JAVA_PROFILE:-local}
-      - CONFIG_SERVER=http://config-server:8888
-      - EUREKA_SERVER=http://discovery-server:8761/eureka
+      - CONFIG_SERVER=http://configuration:8888
+      - EUREKA_SERVER=http://service-discovery:8761/eureka
     stdin_open: true
     build:
       context: bootiful-java
       dockerfile: Dockerfile
-#      network: host
-    ports:
-      - ${BOOTIFUL_JAVA_PORT:-8007}:8007
+#    ports:
+#      - ${BOOTIFUL_JAVA_PORT:-8007}:8007
     depends_on:
-      discovery-server:
+      configuration:
         condition: service_healthy
-#    network_mode: "host"
 
   bootiful-java2:
     container_name: java-client2
     environment:
       - SPRING_PROFILES_ACTIVE=${BOOTIFUL_JAVA_PROFILE:-local}
-      - CONFIG_SERVER=http://config-server:8888
-      - EUREKA_SERVER=http://discovery-server:8761/eureka
+      - CONFIG_SERVER=http://configuration:8888
+      - EUREKA_SERVER=http://service-discovery:8761/eureka
     stdin_open: true
     build:
       context: bootiful-java
       dockerfile: Dockerfile
-    #      network: host
-    ports:
-      - 8006:8007 # ${BOOTIFUL_JAVA_PORT:-8007}:8007
+#    ports:
+#      - 8006:8007 # ${BOOTIFUL_JAVA_PORT:-8007}:8007
     depends_on:
-      discovery-server:
+      configuration:
         condition: service_healthy
-  #    network_mode: "host"
 
   bootiful-kotlin:
-    container_name: kotlin-client
+    container_name: kotlin-client1
     environment:
       - SPRING_PROFILES_ACTIVE=${BOOTIFUL_KOTLIN_PROFILE:-dev}
-      - CONFIG_SERVER=http://config-server:8888
-      - EUREKA_SERVER=http://discovery-server:8761/eureka
+      - CONFIG_SERVER=http://configuration:8888
+      - EUREKA_SERVER=http://service-discovery:8761/eureka
     stdin_open: true
     build:
       context: bootiful-kotlin
       dockerfile: Dockerfile
-#      network: host
-    ports:
-      - 8008 # ${BOOTIFUL_KOTLIN_PORT:-8008}:8008
+#    ports:
+#      - ${BOOTIFUL_KOTLIN_PORT:-8008}:8008
     depends_on:
-      discovery-server:
+      configuration:
         condition: service_healthy
-#    network_mode: "host"
+
+
+networks:
+  default:
+    driver: bridge

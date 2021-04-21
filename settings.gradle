@@ -1,1 +1,6 @@
 rootProject.name = 'spring-cloud-msa'
+include 'service-discovery'
+include 'configuration'
+include 'api-gateway'
+include 'bootiful-java'
+include 'bootiful-kotlin'
