@@ -11,3 +11,11 @@ spring:
     config:
       uri: ${CONFIG_SERVER:http://localhost:8888}
 #      fail-fast: true
+
+# spring boot actuator
+management:
+  endpoints:
+    #    jmx.exposure.exclude: *
+    web:
+      exposure:
+        include: health, info, beans, refresh, configprops

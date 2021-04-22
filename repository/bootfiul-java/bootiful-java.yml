@@ -12,14 +12,6 @@ spring:
       # override from any local property source.
       overrideNone: true
 
-# spring boot actuator
-management:
-  endpoints:
-    #    jmx.exposure.exclude: *
-    web:
-      exposure:
-        include: health, info, beans, refresh, configprops
-
 # register to eureka server
 eureka:
   instance:

@@ -11,6 +11,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.env.Environment;
+import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,6 +25,7 @@ public class BootifulJavaApplication {
     }
 }
 
+@RefreshScope
 @RestController
 class MessageRestController {
     @Value("${custom.message:Hello Nothing}")
@@ -53,7 +55,7 @@ class MessageRestController {
 }
 
 @Data
-@Configuration
+@Component
 @ConfigurationProperties("custom")
 class CustomProps {
     private String message;
