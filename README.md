@@ -12,7 +12,7 @@ cloned and customized from [here](https://github.com/joneconsulting/msa_with_spr
 
 This project includes the followings
 - [service-discovery](https://github.com/meowpunch/spring-cloud-msa/tree/main/service-discovery)
-- [configuration](https://github.com/meowpunch/spring-cloud-msa/tree/main/configuration), [repository]()
+- [configuration](https://github.com/meowpunch/spring-cloud-msa/tree/main/configuration), [repository](https://github.com/meowpunch/spring-cloud-msa/tree/main/repository)
 - [api-gateway](https://github.com/meowpunch/spring-cloud-msa/tree/main/api-gateway)
 - [bootiful-java](https://github.com/meowpunch/spring-cloud-msa/tree/main/bootiful-java), [bootiful-kotlin](https://github.com/meowpunch/spring-cloud-msa/tree/main/bootiful-kotlin)
 
