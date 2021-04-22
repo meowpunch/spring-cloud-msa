@@ -11,11 +11,10 @@ e   88 88    88   8 88 88  8 88 "8    88   e 88    8   8 88  8 88  8    88    88
 cloned and customized from [here](https://github.com/joneconsulting/msa_with_spring_cloud)
 
 This project includes the followings
-- service-discovery
-- configuration
-- api-gateway
-- bootiful-java, bootiful-kotlin
-
+- [service-discovery](https://github.com/meowpunch/spring-cloud-msa/tree/main/service-discovery)
+- [configuration](https://github.com/meowpunch/spring-cloud-msa/tree/main/configuration), [repository]()
+- [api-gateway](https://github.com/meowpunch/spring-cloud-msa/tree/main/api-gateway)
+- [bootiful-java](https://github.com/meowpunch/spring-cloud-msa/tree/main/bootiful-java), [bootiful-kotlin](https://github.com/meowpunch/spring-cloud-msa/tree/main/bootiful-kotlin)
 # Get Started
 ## Test
 - gradle build all services
