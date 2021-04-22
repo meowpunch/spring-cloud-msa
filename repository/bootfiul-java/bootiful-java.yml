@@ -12,14 +12,13 @@ spring:
       # override from any local property source.
       overrideNone: true
 
-# Spring Boot Actuator 에서 endpoint 중 config 를 재설정하는 endpoint `/actuator/refresh` 만 열어둔다.
+# spring boot actuator
 management:
   endpoints:
     #    jmx.exposure.exclude: *
     web:
-      #      base-path: '/refresh'
       exposure:
-        include: refresh
+        include: health, info, beans, refresh, configprops
 
 # register to eureka server
 eureka:
