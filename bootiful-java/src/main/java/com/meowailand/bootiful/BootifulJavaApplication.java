@@ -24,7 +24,6 @@ public class BootifulJavaApplication {
     }
 }
 
-@RefreshScope
 @RestController
 class MessageRestController {
     @Value("${custom.message:Hello Nothing}")
