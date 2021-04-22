@@ -1,5 +1,2 @@
-custom:
-  message: "Hello, I'm from application.yml of bootiful-java"
-
 server:
-  port: 0
+  port: ${SERVER_PORT:0}

@@ -56,7 +56,7 @@ This project includes the followings
 
 
 # Furthermore
-## Multi Host Env
+## Multi Host with Container
 in case of docker network `bridge`, services register docker subnet IP address to service discovery (eureka).
 If api gateway and microservices are running on different hosts, api gateway cannot request to microservices. 
 ```shell

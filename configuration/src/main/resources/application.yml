@@ -18,9 +18,7 @@ spring:
         git:
           uri: https://github.com/meowpunch/spring-cloud-msa.git
           default-label: main
-          searchPaths:
-            # test client
-            - repository
+          search-paths: 'repository/*'
 
 #eureka:
 #  client:
