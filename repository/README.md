@@ -14,7 +14,7 @@ Config Repo는 다음과 같은 역할을 한다.
 
 ## File Structure & Name Convention
 - Config Server는 Config Client의 app name과 profile을 통해, `{spring.application.name}-{spring.profiles-active}.properties(yml)` 파일을 가져온다.(default 포함)
-- 예를들어 hubble 서비스 경우 profile `cld-test`를 active 한 경우 hubble.properties(default) 와 hubble-dev.properties(dev)를 가져온다.
+- 예를들어 bootiful-java 서비스 경우 profile `cld-test`를 active 한 경우 bootiful-java.yml(default) 와 bootiful-java-dev.yml(dev)를 가져온다.
 - `config-repo/` 안에 전부 넣어도 읽어들이는 데 문제는 없지만 앱 이름으로 디렉토리를 만들어 구분했다.
 
 ## Override Remote Properties

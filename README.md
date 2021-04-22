@@ -15,7 +15,27 @@ This project includes the followings
 - [configuration](https://github.com/meowpunch/spring-cloud-msa/tree/main/configuration), [repository]()
 - [api-gateway](https://github.com/meowpunch/spring-cloud-msa/tree/main/api-gateway)
 - [bootiful-java](https://github.com/meowpunch/spring-cloud-msa/tree/main/bootiful-java), [bootiful-kotlin](https://github.com/meowpunch/spring-cloud-msa/tree/main/bootiful-kotlin)
+
 # Get Started
+## Environment
+- spring version compatibility
+
+|        | spring boot   | spring cloud|
+|--------|---------------|-------------|
+| hubble | 2.2.5.RELEASE | Hoxton.SR3  |
+| calc   | 2.3.x         | Hoxton.SR10 |
+| latest | 2.4.4         | 2020.0.2    |
+
+- Spring Cloud Netflix -> Spring Cloud
+
+|                 | maintenance                 | replacement                    |
+|-----------------|-----------------------------|--------------------------------|
+| circuit breaker | Hystrix                     | Resilience4j                   |
+| monitor         | Hystrix Dashboard / Turbine | Micrometer + Monitoring System |
+| load balancer   | Ribbon                      | Spring Cloud Loadbalancer      |
+| api gateway     | Zuul 1                      | Spring Cloud Gateway           |
+| configuration   | Archaius 1                  | Spring Cloud Config            |
+
 ## Test
 - gradle build all services
 ```shell
