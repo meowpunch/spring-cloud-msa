@@ -25,7 +25,6 @@ public class BootifulJavaApplication {
     }
 }
 
-@RefreshScope
 @RestController
 class MessageRestController {
     @Value("${custom.message:Hello Nothing}")
@@ -44,13 +43,44 @@ class MessageRestController {
 
     @GetMapping("/message")
     String getMessage() {
-        logger.info("/message Endpoint 가 호출됐습니다.");
+        final String responseMessage = String.format(
+                "Environment: %s \n" +
+                        "Value: %s \n" +
+                        "Config Props: %s \n"
+                , environment.getProperty("custom.message"), this.message, customProps.getMessage());
 
-        return String.format(
-            "Environment: %s \n" +
-            "Value: %s \n" +
-            "Config Props: %s \n"
-        , environment.getProperty("custom.message"), this.message, customProps.getMessage());
+        logger.info(responseMessage);
+        return responseMessage;
+    }
+}
+
+@RefreshScope
+@RestController
+class MassageRestController {
+    @Value("${custom.message:Hello Nothing}")
+    private String message;
+
+    private final Logger logger = LoggerFactory.getLogger(MessageRestController.class);
+
+    private final CustomProps customProps;
+
+    private final Environment environment;
+
+    public MassageRestController(CustomProps customProps, Environment environment) {
+        this.customProps = customProps;
+        this.environment = environment;
+    }
+
+    @GetMapping("/massage")
+    String getMessage() {
+        final String responseMessage = String.format(
+                "Environment: %s \n" +
+                        "Value: %s \n" +
+                        "Config Props: %s \n"
+                , environment.getProperty("custom.message"), this.message, customProps.getMessage());
+
+        logger.info(responseMessage);
+        return responseMessage;
     }
 }
 
