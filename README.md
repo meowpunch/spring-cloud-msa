@@ -1,12 +1,14 @@
 ```
 
-8""""8                                8""""8                            8                  
-8      eeeee eeeee  e  eeeee eeeee    8    " e     eeeee e   e eeeee    8     eeeee eeeee  
-8eeeee 8   8 8   8  8  8   8 8   8    8e     8     8  88 8   8 8   8    8e    8   8 8   8  
-    88 8eee8 8eee8e 8e 8e  8 8e       88     8e    8   8 8e  8 8e  8    88    8eee8 8eee8e 
-e   88 88    88   8 88 88  8 88 "8    88   e 88    8   8 88  8 88  8    88    88  8 88   8 
-8eee88 88    88   8 88 88  8 88ee8    88eee8 88eee 8eee8 88ee8 88ee8    88eee 88  8 88eee8 
-                                                                                           
+  _____ ____  ____   ____  ____    ____         __  _       ___   __ __  ___        ___ ___  _____  ____ 
+ / ___/|    \|    \ |    ||    \  /    |       /  ]| |     /   \ |  |  ||   \      |   |   |/ ___/ /    |
+(   \_ |  o  )  D  ) |  | |  _  ||   __|      /  / | |    |     ||  |  ||    \     | _   _ (   \_ |  o  |
+ \__  ||   _/|    /  |  | |  |  ||  |  |     /  /  | |___ |  O  ||  |  ||  D  |    |  \_/  |\__  ||     |
+ /  \ ||  |  |    \  |  | |  |  ||  |_ |    /   \_ |     ||     ||  :  ||     |    |   |   |/  \ ||  _  |
+ \    ||  |  |  .  \ |  | |  |  ||     |    \     ||     ||     ||     ||     |    |   |   |\    ||  |  |
+  \___||__|  |__|\_||____||__|__||___,_|     \____||_____| \___/  \__,_||_____|    |___|___| \___||__|__|
+                                                                                                         
+                                                                          
 ```
 cloned and customized from [here](https://github.com/joneconsulting/msa_with_spring_cloud)
 
@@ -26,7 +28,7 @@ This project includes the followings
 | calc   | 2.3.x         | Hoxton.SR10 |
 | latest | 2.4.4         | 2020.0.2    |
 
-- Spring Cloud Netflix -> Spring Cloud
+- Spring Cloud Netflix is placed into maintenance mode. [doc](https://spring.io/blog/2018/12/12/spring-cloud-greenwich-rc1-available-now)
 
 |                 | maintenance                 | replacement                    |
 |-----------------|-----------------------------|--------------------------------|
@@ -54,6 +56,8 @@ This project includes the followings
 
 ```
 
+# Laboratory
+## Config First vs Discovery First
 
 # Furthermore
 ## Multi Host with Container
