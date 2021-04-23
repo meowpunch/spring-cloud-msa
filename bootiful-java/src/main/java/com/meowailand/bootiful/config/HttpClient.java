@@ -8,12 +8,10 @@ import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 import org.springframework.http.converter.StringHttpMessageConverter;
 import org.springframework.web.client.RestTemplate;
 
-import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 
 /**
- * 
- * @author peda0
- * @since 2020.03.
+ * test LoadBalancer with RestTemplate
  */
 @Configuration
 public class HttpClient {
@@ -30,7 +28,7 @@ public class HttpClient {
 				.build();
 		httpRequestFactory.setHttpClient(httpClient);
 		RestTemplate restTemplate = new RestTemplate(httpRequestFactory);
-		restTemplate.getMessageConverters().add(0, new StringHttpMessageConverter(Charset.forName("UTF-8")));
+		restTemplate.getMessageConverters().add(0, new StringHttpMessageConverter(StandardCharsets.UTF_8));
 		return restTemplate;
 	}
 }

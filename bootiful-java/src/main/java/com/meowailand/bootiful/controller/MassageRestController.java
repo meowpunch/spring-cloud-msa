@@ -10,6 +10,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 
+/**
+ * Test @RefreshScope with @Value, @ConfigurationProperties, core.env.Environment
+ */
 @RefreshScope
 @RestController
 class MassageRestController {
