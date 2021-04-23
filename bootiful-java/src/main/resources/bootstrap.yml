@@ -8,7 +8,7 @@ spring:
 
   # default `http://localhost:8888`
   cloud:
-    config:
+    co2nfig:
       enabled: false
 
 #  cloud:
