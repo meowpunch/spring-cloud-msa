@@ -11,7 +11,7 @@ spring:
 #    config:
 #      uri: ${CONFIG_SERVER:http://localhost:8888}
 #      fail-fast: true
-
+  cloud:
     config:
       # fail startup of a service if it cannot connect to the Config Server
       fail-fast: true
