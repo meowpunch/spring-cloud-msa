@@ -55,7 +55,7 @@ class MessageRestController {
         final String baseUrl = environment.getProperty("custom.testUrl");
         assert baseUrl != null;
         ResponseEntity<String> responseEntity =
-                httpClient.getRestTemplate().exchange(baseUrl + "/health", HttpMethod.GET, null, String.class);
+                httpClient.getRestTemplate().exchange(baseUrl + "/health/check", HttpMethod.GET, null, String.class);
         return responseEntity.getBody();
     }
 ///*
