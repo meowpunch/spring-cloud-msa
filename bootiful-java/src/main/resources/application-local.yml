@@ -1,2 +1,3 @@
 custom:
   message: "Hello, I'm from application-local.yml of bootiful-java"
+  testUrl: "http://calc-service/actuator/health"
