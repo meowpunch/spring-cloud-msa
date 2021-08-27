@@ -87,3 +87,6 @@ So, in this situation, set the docker network to `host` to use the host network 
 ```
 Note that you can only use the host networking driver on Linux hosts, not Mac or Windows. [Doc](https://docs.docker.com/network/host/)
 > The host networking driver only works on Linux hosts, and is not supported on Docker Desktop for Mac, Docker Desktop for Windows, or Docker EE for Windows Server.
+
+# Reference
+- [Need to tell eureka client running in Docker to use host's IP](https://github.com/spring-cloud/spring-cloud-netflix/issues/432)
