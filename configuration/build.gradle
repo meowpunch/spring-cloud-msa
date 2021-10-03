@@ -24,7 +24,7 @@ dependencies {
 //    implementation 'org.springframework.cloud:spring-cloud-starter-bus-amqp'
 
     // service discovery client
-//    implementation("org.springframework.cloud:spring-cloud-starter-netflix-eureka-client")
+    implementation("org.springframework.cloud:spring-cloud-starter-netflix-eureka-client")
 
     // etc
     testImplementation 'org.springframework.boot:spring-boot-starter-test'

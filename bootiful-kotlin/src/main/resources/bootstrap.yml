@@ -11,3 +11,7 @@ spring:
     config:
       uri: ${CONFIG_SERVER:http://localhost:8888}
 #      fail-fast: true
+eureka:
+  instance:
+    hostname: localhost
+

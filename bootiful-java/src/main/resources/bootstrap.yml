@@ -6,27 +6,18 @@ spring:
   application:
     name: bootiful-java
 
-  # default `http://localhost:8888`
   cloud:
-    co2nfig:
-      enabled: false
-
-#  cloud:
-#    config:
-#      uri: ${CONFIG_SERVER:http://localhost:8888}
-#      fail-fast: true
-#  cloud:
-#    config:
-#      # fail startup of a service if it cannot connect to the Config Server
-#      fail-fast: true
-#      discovery:
-#        # discovery-first
-#        enabled: true
-#        # eureka 에 등록된 id
-#        service-id: config-service
-#    loadbalancer:
-#      ribbon:
-#        enabled: false
+    config:
+      # fail startup of a service if it cannot connect to the Config Server
+      fail-fast: true
+      discovery:
+        # discovery-first
+        enabled: true
+        # eureka 에 등록된 id
+        service-id: CONFIGURATION
+    loadbalancer:
+      ribbon:
+        enabled: false
 
 # discovery first 를 활용하는 경우 당연히 유레카 정보는 bootstrap.yml 에 존재해야 한다.
 eureka:
@@ -35,11 +26,11 @@ eureka:
     instance-id: ${spring.application.name}:${random.value}
 
   client:
+    enabled: true
     register-with-eureka: true
     fetch-registry: true
     service-url:
-      defaultZone: http://admin:qwer1234@eureka.antock.com/eureka
-
+      defaultZone: http://localhost:8761/eureka
 
 # spring boot actuator
 management:

@@ -53,14 +53,37 @@ This project includes the followings
 - request to services
 ```shell
 > curl -XGET 'http://localhost:8000/bootiful-java/message'
-
 ```
 
 # Laboratory
 ## Config First vs Discovery First
+- bootiful-java config for [discovery first](https://cloud.spring.io/spring-cloud-static/Greenwich.RELEASE/multi/multi__spring_cloud_config_client.html#discovery-first-bootstrap)
+```
+spring:
+  cloud:
+    config:
+      # fail startup of a service if it cannot connect to the Config Server
+      fail-fast: true
+      discovery:
+        # discovery-first
+        enabled: true
+        # config server id in service discovery
+        service-id: configuration
+```
+- docker-compose for discovery first test
+```dockerfile
+configuration:
+    container_name: configuration
+    ...
+    depends_on:
+      service-discovery:
+        condition: service_healthy
+```
+
+
 
 # Furthermore
-## Multi Host with Container
+## Distributed System with Container
 in case of docker network `bridge`, services register docker subnet IP address to service discovery (eureka).
 If api gateway and microservices are running on different hosts, api gateway cannot request to microservices. 
 ```shell
