@@ -17,15 +17,4 @@ server:
 #management.endpoints.web.base-path=/actuator
 #management.endpoints.web.exposure.include=refresh
 
-# register to eureka server
-eureka:
-  instance:
-    instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
-    prefer-ip-address: true
-  client:
-    register-with-eureka: true
-    fetch-registry: true
-    service-url:
-      defaultZone: ${EUREKA_SERVER:http://localhost:8761/eureka/}
-    healthcheck:
-      enabled: true
+

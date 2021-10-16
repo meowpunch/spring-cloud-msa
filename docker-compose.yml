@@ -1,4 +1,4 @@
-version: '3'
+version: '2.4'
 services:
   service-discovery:
     container_name: service-discovery
@@ -51,7 +51,6 @@ services:
     container_name: java-client1
     environment:
       - SPRING_PROFILES_ACTIVE=${BOOTIFUL_JAVA_PROFILE:-local}
-      - CONFIG_SERVER=http://configuration:8888
       - EUREKA_SERVER=http://service-discovery:8761/eureka
     stdin_open: true
     build:
@@ -67,7 +66,6 @@ services:
     container_name: java-client2
     environment:
       - SPRING_PROFILES_ACTIVE=${BOOTIFUL_JAVA_PROFILE:-local}
-      - CONFIG_SERVER=http://configuration:8888
       - EUREKA_SERVER=http://service-discovery:8761/eureka
     stdin_open: true
     build:

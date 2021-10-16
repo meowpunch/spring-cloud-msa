@@ -14,7 +14,7 @@ spring:
         # discovery-first
         enabled: true
         # eureka 에 등록된 id
-        service-id: CONFIGURATION
+        service-id: configuration
     loadbalancer:
       ribbon:
         enabled: false
@@ -26,11 +26,11 @@ eureka:
     instance-id: ${spring.application.name}:${random.value}
 
   client:
-    enabled: true
-    register-with-eureka: true
-    fetch-registry: true
+    enabled: true # default
+    register-with-eureka: true # default
+    fetch-registry: true # default
     service-url:
-      defaultZone: http://localhost:8761/eureka
+      defaultZone: ${EUREKA_SERVER:http://localhost:8761/eureka/}
 
 # spring boot actuator
 management:

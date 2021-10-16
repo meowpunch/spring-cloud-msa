@@ -9,9 +9,21 @@ spring:
   # default `http://localhost:8888`
   cloud:
     config:
-      uri: ${CONFIG_SERVER:http://localhost:8888}
-#      fail-fast: true
+      discovery:
+        # discovery-first
+        enabled: true
+        # eureka 에 등록된 id
+        service-id: configuration
+
+# register to eureka server
 eureka:
   instance:
-    hostname: localhost
-
+    instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+    prefer-ip-address: true
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: ${EUREKA_SERVER:http://localhost:8761/eureka/}
+    healthcheck:
+      enabled: true

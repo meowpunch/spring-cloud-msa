@@ -80,10 +80,11 @@ configuration:
         condition: service_healthy
 ```
 
-
+## Auto Refreshing Config
+Explain how to auto refresh configuration.
 
 # Furthermore
-## Distributed System with Container
+## Container Environment
 in case of docker network `bridge`, services register docker subnet IP address to service discovery (eureka).
 If api gateway and microservices are running on different hosts, api gateway cannot request to microservices. 
 ```shell
@@ -113,3 +114,4 @@ Note that you can only use the host networking driver on Linux hosts, not Mac or
 
 # Reference
 - [Need to tell eureka client running in Docker to use host's IP](https://github.com/spring-cloud/spring-cloud-netflix/issues/432)
+- [Deploying Microservices: Spring Cloud vs Kubernetes](https://dzone.com/articles/deploying-microservices-spring-cloud-vs-kubernetes)
