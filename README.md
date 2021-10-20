@@ -10,8 +10,6 @@
                                                                                                          
                                                                           
 ```
-cloned and customized from [here](https://github.com/joneconsulting/msa_with_spring_cloud)
-
 This project includes the followings
 - [service-discovery](https://github.com/meowpunch/spring-cloud-msa/tree/main/service-discovery)
 - [configuration](https://github.com/meowpunch/spring-cloud-msa/tree/main/configuration), [repository](https://github.com/meowpunch/spring-cloud-msa/tree/main/repository)
